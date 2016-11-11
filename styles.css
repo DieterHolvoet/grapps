@@ -1,0 +1,998 @@
+/* FONTS */
+
+@font-face {
+    font-family: 'Rookies Showtimes';
+    src: url('fonts/Rookies Showtimes-webfont.eot');
+    src: url('fonts/Rookies Showtimes-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Rookies Showtimes-webfont.woff2') format('woff2'),
+         url('fonts/Rookies Showtimes-webfont.woff') format('woff'),
+         url('fonts/Rookies Showtimes-webfont.ttf') format('truetype'),
+         url('fonts/Rookies Showtimes-webfont.svg#rookies_showtimesregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Bariol";
+    src: url("fonts/bariol_regular-webfont.eot?#iefix") format("embedded-opentype"),
+    url("fonts/bariol_regular-webfont.woff") format("woff"),
+    url("fonts/bariol_regular-webfont.ttf") format("truetype"),
+    url("fonts/bariol_regular-webfont.svg") format("svg");
+}
+
+@font-face {
+    font-family: "Bariol Bold";
+    src: url("fonts/bariol_bold-webfont.eot?#iefix") format("embedded-opentype"),
+    url("fonts/bariol_bold-webfont.woff") format("woff"),
+    url("fonts/bariol_bold-webfont.ttf") format("truetype"),
+    url("fonts/bariol_bold-webfont.svg") format("svg");
+}
+
+/* IPHONE CLICK EVENT BUGFIX */
+.chooser li, .settings-group input[type='radio'], .checkbox-group, #settingsButton {
+    cursor: pointer;
+}
+
+/* CLEARFIX */
+/* Source: http://goo.gl/upD0Qx */
+
+.clearfix:before,
+.clearfix:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+/* SPINNER ANIMATION */
+/* Source: http://codepen.io/mrrocks/pen/EiplA */
+.spinner {
+  -webkit-animation: rotator 1.4s linear infinite;
+          animation: rotator 1.4s linear infinite;
+}
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+.path {
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+      -ms-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+}
+
+@-webkit-keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+
+@keyframes colors {
+  0% {
+    stroke: #4285F4;
+  }
+  25% {
+    stroke: #DE3E35;
+  }
+  50% {
+    stroke: #F7C223;
+  }
+  75% {
+    stroke: #1B9A59;
+  }
+  100% {
+    stroke: #4285F4;
+  }
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+
+/* MAIN */
+
+.hide {
+    display: none;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-color: #536d79;
+    margin: 0;
+}
+
+main {
+    padding: 50px 0 0 80px;
+    min-height: calc(100vh - 130px);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.page-header, .provider-entry {
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    box-sizing: border-box;
+    margin-bottom: 50px;
+}
+
+.grapps {
+    font-family: 'Rookies Showtimes', cursive;
+    font-size: 1.6em;
+    text-transform: lowercase;
+}
+
+/* COLUMNS */
+
+.col-1, .col-2, .col-3 {
+    float: left;
+    margin-right: 50px;
+/*    width: 480px;*/
+}
+
+main > div:last-of-type {
+    margin-right: 0;
+}
+
+/* PAGE HEADER */
+
+.page-header {
+    color: #606060;
+    background-color: #ffd44e;
+    padding: 20px;
+    width: 480px;
+    z-index: 100;
+}
+
+.page-header > h1 {
+    font-family: 'Rookies Showtimes', cursive;
+    font-size: 110px;
+    margin: 0;
+    text-align: center;
+}
+
+.page-header > h2 {
+    font-family: "Bariol", sans-serif;
+    text-transform: uppercase;
+    font-size: 23px;
+    margin: 8px 0 30px 0;
+    text-align: center;
+}
+
+.page-header > ul {
+    text-align: center;
+    padding: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.chooser li {
+    display: inline-block;
+}
+
+#filter-android {
+    background-image: url(svg/platform_logo/android.svg);
+}
+
+#filter-iphone {
+    background-image: url(svg/platform_logo/iphone.svg);
+}
+
+#filter-windows {
+    background-image: url(svg/platform_logo/windows.svg);
+}
+
+#filter-ipad {
+    background-image: url(svg/platform_logo/ipad.svg);
+}
+
+.circleButton {
+    list-style: none;
+    margin: 5px 10px;
+    padding: 0;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    /* Source: http://goo.gl/sDGizQ */
+    -webkit-transition: box-shadow -webkit-transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.circleButton:active {
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition-delay: 0s;
+    transition-delay: 0s;
+}
+
+.header-hidden {
+    display: none;
+}
+
+.header-hidden > section {
+    padding: 30px 20px 0 20px;
+}
+
+.settings-group {
+    width: 50%;
+    box-sizing: border-box;
+    float: left;
+}
+
+.header-hidden h1 {
+    font-family: Bariol, sans-serif;
+    font-weight: 700;
+    font-size: 25px;
+    text-align: left;
+    margin: 0;
+}
+
+.header-hidden h2 {
+    font-family: Bariol, sans-serif;
+    font-size: 20px;
+    text-align: left;
+    margin: 15px 0 10px 0;
+}
+
+.header-hidden .changelog h2 {
+    text-align: center;
+}
+
+.header-hidden p, .header-hidden a, .header-hidden b {
+    font-family: Bariol, sans-serif;
+    font-size: 19px;
+    text-align: justify;
+    margin: 5px 0 12px 0;
+}
+
+.header-hidden li {
+    font-family: Bariol, sans-serif;
+    font-size: 17px;
+    list-style-type: square;
+}
+
+.header-hidden ul {
+    margin-top: 5px;
+}
+
+.header-hidden a {
+    font-weight: 800;
+    color: #606060;
+    text-decoration: none;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding: 20px 0;
+    height: 30px;
+    line-height: 30px;
+}
+
+.header-hidden a:hover {
+    font-size: 27px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+}
+
+/* MATERIAL RADIO BUTTON */
+/* BASED OFF http://goo.gl/lVx5gi */
+
+.radio {
+    float: left;
+    clear: left;
+    font-size: 18px;
+    line-height: 37px;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+}
+
+.radio:hover .inner {
+    -webkit-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: .5;
+}
+
+.radio input {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    margin: 0 2px 0 0;
+}
+
+.radio input:checked + .outer .inner {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+}
+
+.radio input:checked + .outer {
+    border: 3px solid #536d79;
+}
+
+.radio input:focus + .outer .inner {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+    background-color: #536d79;
+}
+
+.radio .outer {
+    width: 17px;
+    height: 17px;
+    display: block;
+    float: left;
+    margin: 5px 5px 5px 0;
+    border: 3px solid #536d79;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+.radio .inner {
+    -webkit-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+    width: 13px;
+    height: 13px;
+    -webkit-transform: scale(0);
+    -ms-transform: scale(0);
+    transform: scale(0);
+    display: block;
+    margin: 2px;
+    border-radius: 50%;
+    background-color: #536d79;
+    opacity: 0;
+}
+
+/* MATERIAL CHECKBOX */
+/* BASED OFF http://goo.gl/3HQQOz */
+
+.checkbox-group {
+    position: relative;
+    text-align: left;
+    line-height: 26px;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    padding-left: 37px;
+    margin: 5px 0;
+}
+
+.checkbox-group input[type=checkbox] {
+    display: none;
+}
+
+.checkbox-group label {
+    cursor: pointer;
+}
+
+.checkbox-group label span {
+    position: absolute;
+    left: 0;
+    -webkit-transition-duration: .3s;
+            transition-duration: .3s;
+}
+
+.checkbox-group label .box {
+    background-color: white;
+    height: 17px;
+    width: 17px;
+    z-index: 9;
+    -webkit-transition-delay: .2s;
+    transition-delay: .2s;
+    border: 3px solid #536d79;
+    border-radius: 7px;
+}
+ 
+.checkbox-group label .check {
+    top: 2px;
+    left: 9px;
+    width: 5px;
+    height: 14px;
+    border: 3px solid #536d79;
+    border-top: none;
+    border-left: none;
+    opacity: 0;
+    z-index: 8;
+    -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+}
+
+input[type=checkbox]:checked ~ label .box {
+    background: white;
+}
+
+input[type=checkbox]:checked ~ label .check {
+    opacity: 1;
+    -webkit-transform: scale(1) rotate(45deg);
+            -ms-transform: scale(1) rotate(45deg);
+            transform: scale(1) rotate(45deg);
+    z-index: 10;
+}
+
+/**********************/
+/*  PROVIDER ENTRIES  */
+/**********************/
+
+.provider-entry h1, .provider-entry h2, .provider-entry p, .provider-entry span {
+    color: #606060;
+    font-family: "Bariol", sans-serif;
+}
+
+.provider-header, .app-entry, .app-description {
+    padding: 25px;
+    border-bottom: 2px solid #ececec;
+}
+
+.provider-logo {
+    height: 50px;
+    max-width: 80%;
+}
+
+.spinner {
+    height: 50px;
+    max-width: 20%;
+    float: right;
+}
+
+.noapps {
+    padding: 0 50px 0 50px;
+    font-size: 30px;
+}
+
+.provider-entry {
+    background-color: white;
+}
+
+/* SINGLE COLUMN */
+
+.provider-entry.single-column {
+    width: 480px;
+}
+
+/* DOUBLE COLUMN */
+
+.provider-entry.double-column {
+    width: 960px;
+}
+
+.double-column .app-list {
+    -webkit-column-count: 2;
+       -moz-column-count: 2;
+            column-count: 2;
+    -webkit-column-width: 50%;
+       -moz-column-width: 50%;
+            column-width: 50%;
+    -webkit-column-gap: 0;
+       -moz-column-gap: 0;
+            column-gap: 0;
+}
+
+.double-column .app-entry {
+    -webkit-column-break-inside: avoid; /* WebKit */
+    page-break-inside: avoid; /* Firefox */
+    break-inside: avoid; /* IE 10+ */
+}
+
+/* APP ENTRY */
+
+.app-entry {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.app-logo {
+    float: left;
+    height: 90px;
+    width: 90px;
+    margin-right: 20px;
+/*    background: url(img/barty_run.png) no-repeat;*/
+    background-size: 100%;
+}
+
+.app-entry h1 {
+    font-family: "Bariol", sans-serif;
+    text-transform: uppercase;
+    font-size: 34px;
+    margin: 0;
+    color: #445963;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-entry > p:nth-of-type(1) {
+    font-family: "Bariol", sans-serif;
+    font-size: 20px;
+    margin: 0;
+    color: #445963;
+}
+
+.app-entry a {
+    text-decoration: none;
+}
+
+/* SMALL APP ENTRY */
+
+.app-list .app-logo {
+    height: 70px;
+    width: 70px;
+}
+
+.app-list .app-entry:first-of-type {
+    border-top: 0;
+}
+
+.app-list .app-entry {
+    padding: 15px 20px;
+    min-height: 60px;
+    box-sizing: content-box;
+    width: auto;
+}
+
+.app-list .app-entry h1 {
+    font-size: 28px;
+    font-weight: 100;
+    line-height: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-list .app-entry > p:nth-of-type(1) {
+    color: #747474;
+    height: 35px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+.app-list .rating {
+    height: 24px;
+    width: 90px;
+    background-position: center center;
+    float: left;
+    margin: 2px 15px 0 0;
+}
+
+.app-list .pricetag-box {
+    margin: 2px 0 0 0;
+    width: 245px;
+    float: right;
+}
+
+.app-list .pricetag-box > p:first-of-type {
+    font-family: "Bariol", sans-serif;
+    font-size: 18px;
+    line-height: 24px;
+    margin: 0;
+    float: left;
+    width: 135px;
+}
+
+.app-list .pricetag {
+    background: url(svg/pricetag.svg) no-repeat;
+    height: 24px;
+    width: 110px;
+    float: left;
+}
+
+.app-list .pricetag p {
+    line-height: 24px;
+    padding-left: 30px;
+    margin: 0;
+    font-family: "Roboto Light", sans-serif;
+    color: white;
+    font-size: 15px;
+}
+
+/*
+LIJNEN AFBREKEN:
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+*/
+
+/* RATING */
+
+.stars-0 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%200%2090.6%2017%22%20enable-background%3D%22new%200%200%2090.6%2017%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M13.8%2C17l-5.3-2.9L3.2%2C17l1-6.2L0%2C6.5l5.9-0.9L8.5%2C0l2.6%2C5.6L17%2C6.5l-4.3%2C4.4L13.8%2C17z%20M8.5%2C13l4%2C2.2%0D%0A%09l-0.8-4.7L15%2C7.2l-4.5-0.7l-2-4.2l-2%2C4.2L2%2C7.2l3.2%2C3.3l-0.8%2C4.7L8.5%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M32.1%2C17l-5.3-2.9L21.6%2C17l1-6.2l-4.3-4.4l5.9-0.9L26.9%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L32.1%2C17z%20M26.9%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L26.9%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M50.5%2C17l-5.3-2.9L40%2C17l1-6.2l-4.3-4.4l5.9-0.9L45.3%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L50.5%2C17z%20M38.8%2C7.2%0D%0A%09l3.2%2C3.3l-0.8%2C4.7l4-2.2l4%2C2.2l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2L38.8%2C7.2z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M69%2C17l-5.3-2.9L58.4%2C17l1-6.2l-4.3-4.4l5.9-0.9L63.7%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L69%2C17z%20M63.7%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L63.7%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M87.4%2C17l-5.3-2.9L76.8%2C17l1-6.2l-4.3-4.4l5.9-0.9L82.1%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L87.4%2C17z%20M82.1%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L82.1%2C13z%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-05 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%200%2090.6%2017%22%20enable-background%3D%22new%200%200%2090.6%2017%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M32.1%2C17l-5.3-2.9L21.6%2C17l1-6.2l-4.3-4.4l5.9-0.9L26.9%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L32.1%2C17z%20M26.9%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L26.9%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M50.5%2C17l-5.3-2.9L40%2C17l1-6.2l-4.3-4.4l5.9-0.9L45.3%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L50.5%2C17z%20M38.8%2C7.2%0D%0A%09l3.2%2C3.3l-0.8%2C4.7l4-2.2l4%2C2.2l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2L38.8%2C7.2z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M69%2C17l-5.3-2.9L58.4%2C17l1-6.2l-4.3-4.4l5.9-0.9L63.7%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L69%2C17z%20M63.7%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L63.7%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M87.4%2C17l-5.3-2.9L76.8%2C17l1-6.2l-4.3-4.4l5.9-0.9L82.1%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L87.4%2C17z%20M82.1%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L82.1%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M17%2C6.5l-5.9-0.9L8.5%2C0L5.9%2C5.6L0%2C6.5l4.3%2C4.4l-1%2C6.2l5.3-2.9l5.3%2C2.9l-1-6.2L17%2C6.5z%20M9%2C13V2.4l1.7%2C4.1%0D%0A%09l4.4%2C0.7l-3.3%2C3.3l0.9%2C4.7L9%2C13z%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-1 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%200%2090.6%2017%22%20enable-background%3D%22new%200%200%2090.6%2017%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M32.1%2C17l-5.3-2.9L21.6%2C17l1-6.2l-4.3-4.4l5.9-0.9L26.9%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L32.1%2C17z%20M26.9%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L26.9%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M50.5%2C17l-5.3-2.9L40%2C17l1-6.2l-4.3-4.4l5.9-0.9L45.3%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L50.5%2C17z%20M38.8%2C7.2%0D%0A%09l3.2%2C3.3l-0.8%2C4.7l4-2.2l4%2C2.2l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2L38.8%2C7.2z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M69%2C17l-5.3-2.9L58.4%2C17l1-6.2l-4.3-4.4l5.9-0.9L63.7%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L69%2C17z%20M63.7%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L63.7%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M87.4%2C17l-5.3-2.9L76.8%2C17l1-6.2l-4.3-4.4l5.9-0.9L82.1%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L87.4%2C17z%20M82.1%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L82.1%2C13z%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%2217%2C6.5%2011.1%2C5.6%208.5%2C0%205.9%2C5.6%200%2C6.5%204.3%2C10.8%203.2%2C17%208.5%2C14.1%2013.8%2C17%2012.7%2C10.8%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-15 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%200%2090.6%2017%22%20enable-background%3D%22new%200%200%2090.6%2017%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M50.5%2C17l-5.3-2.9L40%2C17l1-6.2l-4.3-4.4l5.9-0.9L45.3%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L50.5%2C17z%20M38.8%2C7.2%0D%0A%09l3.2%2C3.3l-0.8%2C4.7l4-2.2l4%2C2.2l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2L38.8%2C7.2z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M69%2C17l-5.3-2.9L58.4%2C17l1-6.2l-4.3-4.4l5.9-0.9L63.7%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L69%2C17z%20M63.7%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L63.7%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M87.4%2C17l-5.3-2.9L76.8%2C17l1-6.2l-4.3-4.4l5.9-0.9L82.1%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L87.4%2C17z%20M82.1%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L82.1%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M35.4%2C6.5l-5.9-0.9L26.9%2C0l-2.6%2C5.6l-5.9%2C0.9l4.3%2C4.4l-1%2C6.2l5.3-2.9l5.3%2C2.9l-1-6.2L35.4%2C6.5z%20M27%2C13V2.4%0D%0A%09l1.9%2C4.1l4.5%2C0.7l-3.2%2C3.3l0.8%2C4.7L27%2C13z%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%2217%2C6.5%2011.1%2C5.6%208.5%2C0%205.9%2C5.6%200%2C6.5%204.3%2C10.8%203.2%2C17%208.5%2C14.1%2013.8%2C17%2012.7%2C10.8%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-2 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%200%2090.6%2017%22%20enable-background%3D%22new%200%200%2090.6%2017%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M50.5%2C17l-5.3-2.9L40%2C17l1-6.2l-4.3-4.4l5.9-0.9L45.3%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L50.5%2C17z%20M38.8%2C7.2%0D%0A%09l3.2%2C3.3l-0.8%2C4.7l4-2.2l4%2C2.2l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2L38.8%2C7.2z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M69%2C17l-5.3-2.9L58.4%2C17l1-6.2l-4.3-4.4l5.9-0.9L63.7%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L69%2C17z%20M63.7%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L63.7%2C13z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M87.4%2C17l-5.3-2.9L76.8%2C17l1-6.2l-4.3-4.4l5.9-0.9L82.1%2C0l2.6%2C5.6l5.9%2C0.9l-4.3%2C4.4L87.4%2C17z%20M82.1%2C13l4%2C2.2%0D%0A%09l-0.8-4.7l3.2-3.3l-4.5-0.7l-2-4.2l-2%2C4.2l-4.5%2C0.7l3.2%2C3.3l-0.8%2C4.7L82.1%2C13z%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%2235.4%2C6.5%2029.5%2C5.6%2026.9%2C0%2024.3%2C5.6%2018.4%2C6.5%2022.7%2C10.8%2021.7%2C17%2026.9%2C14.1%2032.2%2C17%2031.2%2C10.8%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%2217%2C6.5%2011.1%2C5.6%208.5%2C0%205.9%2C5.6%200%2C6.5%204.3%2C10.8%203.2%2C17%208.5%2C14.1%2013.8%2C17%2012.7%2C10.8%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-25 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20188.7%20960%20183%22%20enable-background%3D%22new%200%20188.7%20960%20183%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M731.1%2C370.1L675%2C339.3l-56.2%2C30.7l10.6-65.7l-45.6-46.6l62.5-9.5l28.6-58.3l27.5%2C59.3l62.5%2C9.5l-45.6%2C46.6%0D%0A%09L731.1%2C370.1z%20M675%2C327.7l42.4%2C23.3l-8.5-49.8l33.9-35l-47.7-7.4l-21.2-44.5l-21.2%2C44.5l-47.7%2C7.4l33.9%2C35l-8.5%2C49.8L675%2C327.7z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M926.1%2C370.1l-56.2-30.7l-56.2%2C30.7l10.6-65.7l-45.6-46.6l62.5-9.5l28.6-58.3l27.5%2C59.3l62.5%2C9.5l-45.6%2C46.6%0D%0A%09L926.1%2C370.1z%20M869.9%2C327.7l42.4%2C23.3l-8.5-49.8l33.9-35l-47.7-7.4l-21.2-44.5l-21.2%2C44.5l-47.7%2C7.4l33.9%2C35l-8.5%2C49.8L869.9%2C327.7z%0D%0A%09%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22375.1%2C258.8%20312.6%2C249.3%20285%2C189.9%20257.5%2C249.3%20195%2C258.8%20240.5%2C304.4%20229.9%2C370.1%20285%2C339.3%20%0D%0A%09341.2%2C370.1%20330.6%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22180.1%2C258.8%20117.6%2C249.3%2090.1%2C189.9%2062.5%2C249.3%200%2C258.8%2045.6%2C304.4%2033.9%2C370.1%2090.1%2C339.3%20%0D%0A%09146.2%2C370.1%20134.6%2C304.4%20%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M570.8%2C258.3l-63.2-9.6l-27.8-59.9L452%2C248.7l-63.2%2C9.6l46%2C47.1l-10.7%2C66.4l56.7-31l56.7%2C31L527%2C305.4%0D%0A%09L570.8%2C258.3z%20M478.8%2C327.9V214.4l21.4%2C43.9l48.2%2C7.5l-34.3%2C35.3l7.5%2C50.3L478.8%2C327.9z%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-3 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20188.7%20960%20183%22%20enable-background%3D%22new%200%20188.7%20960%20183%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22569.9%2C258.8%20507.4%2C249.3%20479.9%2C189.9%20452.3%2C249.3%20389.8%2C258.8%20435.4%2C304.4%20424.8%2C370.1%20479.9%2C339.3%20%0D%0A%09536%2C370.1%20525.4%2C304.4%20%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M731.1%2C370.1L675%2C339.3l-56.2%2C30.7l10.6-65.7l-45.6-46.6l62.5-9.5l28.6-58.3l27.5%2C59.3l62.5%2C9.5l-45.6%2C46.6%0D%0A%09L731.1%2C370.1z%20M675%2C327.7l42.4%2C23.3l-8.5-49.8l33.9-35l-47.7-7.4l-21.2-44.5l-21.2%2C44.5l-47.7%2C7.4l33.9%2C35l-8.5%2C49.8L675%2C327.7z%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M926.1%2C370.1l-56.2-30.7l-56.2%2C30.7l10.6-65.7l-45.6-46.6l62.5-9.5l28.6-58.3l27.5%2C59.3l62.5%2C9.5l-45.6%2C46.6%0D%0A%09L926.1%2C370.1z%20M869.9%2C327.7l42.4%2C23.3l-8.5-49.8l33.9-35l-47.7-7.4l-21.2-44.5l-21.2%2C44.5l-47.7%2C7.4l33.9%2C35l-8.5%2C49.8L869.9%2C327.7z%0D%0A%09%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22375.1%2C258.8%20312.6%2C249.3%20285%2C189.9%20257.5%2C249.3%20195%2C258.8%20240.5%2C304.4%20229.9%2C370.1%20285%2C339.3%20%0D%0A%09341.2%2C370.1%20330.6%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22180.1%2C258.8%20117.6%2C249.3%2090.1%2C189.9%2062.5%2C249.3%200%2C258.8%2045.6%2C304.4%2033.9%2C370.1%2090.1%2C339.3%20%0D%0A%09146.2%2C370.1%20134.6%2C304.4%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-35 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20188.7%20960%20183%22%20enable-background%3D%22new%200%20188.7%20960%20183%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M763.4%2C258.6l-62.3-9.5l-27.5-59.2l-27.5%2C59.2l-62.3%2C9.5l45.4%2C46.5l-10.6%2C65.5l56-30.6l56%2C30.6l-10.6-65.5%0D%0A%09L763.4%2C258.6z%20M672.6%2C327.3v-112l21.1%2C43.3l47.5%2C7.4l-33.8%2C34.9l7.4%2C49.6L672.6%2C327.3z%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22569.9%2C258.8%20507.4%2C249.3%20479.9%2C189.9%20452.3%2C249.3%20389.8%2C258.8%20435.4%2C304.4%20424.8%2C370.1%20479.9%2C339.3%20%0D%0A%09536%2C370.1%20525.4%2C304.4%20%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M926.1%2C370.1l-56.2-30.7l-56.2%2C30.7l10.6-65.7l-45.6-46.6l62.5-9.5l28.6-58.3l27.5%2C59.3l62.5%2C9.5l-45.6%2C46.6%0D%0A%09L926.1%2C370.1z%20M869.9%2C327.7l42.4%2C23.3l-8.5-49.8l33.9-35l-47.7-7.4l-21.2-44.5l-21.2%2C44.5l-47.7%2C7.4l33.9%2C35l-8.5%2C49.8L869.9%2C327.7z%0D%0A%09%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22375.1%2C258.8%20312.6%2C249.3%20285%2C189.9%20257.5%2C249.3%20195%2C258.8%20240.5%2C304.4%20229.9%2C370.1%20285%2C339.3%20%0D%0A%09341.2%2C370.1%20330.6%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22180.1%2C258.8%20117.6%2C249.3%2090.1%2C189.9%2062.5%2C249.3%200%2C258.8%2045.6%2C304.4%2033.9%2C370.1%2090.1%2C339.3%20%0D%0A%09146.2%2C370.1%20134.6%2C304.4%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-4 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20188.7%20960%20183%22%20enable-background%3D%22new%200%20188.7%20960%20183%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22763.7%2C258.8%20701.2%2C249.3%20673.6%2C189.9%20646.1%2C249.3%20583.6%2C258.8%20629.1%2C304.4%20618.5%2C370.1%20673.6%2C339.3%20%0D%0A%09729.8%2C370.1%20719.2%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22569.9%2C258.8%20507.4%2C249.3%20479.9%2C189.9%20452.3%2C249.3%20389.8%2C258.8%20435.4%2C304.4%20424.8%2C370.1%20479.9%2C339.3%20%0D%0A%09536%2C370.1%20525.4%2C304.4%20%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M926.1%2C370.1l-56.2-30.7l-56.2%2C30.7l10.6-65.7l-45.6-46.6l62.5-9.5l28.6-58.3l27.5%2C59.3l62.5%2C9.5l-45.6%2C46.6%0D%0A%09L926.1%2C370.1z%20M869.9%2C327.7l42.4%2C23.3l-8.5-49.8l33.9-35l-47.7-7.4l-21.2-44.5l-21.2%2C44.5l-47.7%2C7.4l33.9%2C35l-8.5%2C49.8L869.9%2C327.7z%0D%0A%09%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22375.1%2C258.8%20312.6%2C249.3%20285%2C189.9%20257.5%2C249.3%20195%2C258.8%20240.5%2C304.4%20229.9%2C370.1%20285%2C339.3%20%0D%0A%09341.2%2C370.1%20330.6%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22180.1%2C258.8%20117.6%2C249.3%2090.1%2C189.9%2062.5%2C249.3%200%2C258.8%2045.6%2C304.4%2033.9%2C370.1%2090.1%2C339.3%20%0D%0A%09146.2%2C370.1%20134.6%2C304.4%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-45 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20188.7%20960%20183%22%20enable-background%3D%22new%200%20188.7%20960%20183%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22763.7%2C258.8%20701.2%2C249.3%20673.6%2C189.9%20646.1%2C249.3%20583.6%2C258.8%20629.1%2C304.4%20618.5%2C370.1%20673.6%2C339.3%20%0D%0A%09729.8%2C370.1%20719.2%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22569.9%2C258.8%20507.4%2C249.3%20479.9%2C189.9%20452.3%2C249.3%20389.8%2C258.8%20435.4%2C304.4%20424.8%2C370.1%20479.9%2C339.3%20%0D%0A%09536%2C370.1%20525.4%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22375.1%2C258.8%20312.6%2C249.3%20285%2C189.9%20257.5%2C249.3%20195%2C258.8%20240.5%2C304.4%20229.9%2C370.1%20285%2C339.3%20%0D%0A%09341.2%2C370.1%20330.6%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22180.1%2C258.8%20117.6%2C249.3%2090.1%2C189.9%2062.5%2C249.3%200%2C258.8%2045.6%2C304.4%2033.9%2C370.1%2090.1%2C339.3%20%0D%0A%09146.2%2C370.1%20134.6%2C304.4%20%22/%3E%0D%0A%3Cpath%20fill%3D%22%23546E7A%22%20d%3D%22M959.7%2C259.1l-62.8-9.6l-27.7-59.6l-27.7%2C59.6l-62.8%2C9.6l45.8%2C46.8l-10.6%2C66l56.4-30.9l56.4%2C30.9l-10.6-66%0D%0A%09L959.7%2C259.1z%20M868.2%2C328.3V215.5l21.3%2C43.6l47.9%2C7.4l-34.1%2C35.1l7.4%2C50L868.2%2C328.3z%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.stars-5 {
+	background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%0D%0A%3C%21--%20Generator%3A%20Adobe%20Illustrator%2018.1.1%2C%20SVG%20Export%20Plug-In%20.%20SVG%20Version%3A%206.00%20Build%200%29%20%20--%3E%0D%0A%3Csvg%20version%3D%221.1%22%20id%3D%22Laag_1%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20xmlns%3Axlink%3D%22http%3A//www.w3.org/1999/xlink%22%20x%3D%220px%22%20y%3D%220px%22%0D%0A%09%20viewBox%3D%220%20188.7%20960%20183%22%20enable-background%3D%22new%200%20188.7%20960%20183%22%20xml%3Aspace%3D%22preserve%22%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22763.7%2C258.8%20701.2%2C249.3%20673.6%2C189.9%20646.1%2C249.3%20583.6%2C258.8%20629.1%2C304.4%20618.5%2C370.1%20673.6%2C339.3%20%0D%0A%09729.8%2C370.1%20719.2%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22959.3%2C258.8%20896.8%2C249.3%20869.3%2C189.9%20841.7%2C249.3%20779.2%2C258.8%20824.8%2C304.4%20814.2%2C370.1%20869.3%2C339.3%20%0D%0A%09925.4%2C370.1%20914.8%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22569.9%2C258.8%20507.4%2C249.3%20479.9%2C189.9%20452.3%2C249.3%20389.8%2C258.8%20435.4%2C304.4%20424.8%2C370.1%20479.9%2C339.3%20%0D%0A%09536%2C370.1%20525.4%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22375.1%2C258.8%20312.6%2C249.3%20285%2C189.9%20257.5%2C249.3%20195%2C258.8%20240.5%2C304.4%20229.9%2C370.1%20285%2C339.3%20%0D%0A%09341.2%2C370.1%20330.6%2C304.4%20%22/%3E%0D%0A%3Cpolygon%20fill%3D%22%23546E7A%22%20points%3D%22180.1%2C258.8%20117.6%2C249.3%2090.1%2C189.9%2062.5%2C249.3%200%2C258.8%2045.6%2C304.4%2033.9%2C370.1%2090.1%2C339.3%20%0D%0A%09146.2%2C370.1%20134.6%2C304.4%20%22/%3E%0D%0A%3C/svg%3E%0D%0A');
+	background-repeat: no-repeat;
+}
+
+.rating {
+    text-indent: -9999px;
+    display: inline-block;
+    height: 45px;
+    width: 170px;
+    background-position: center center;
+}
+
+/* APP DESCRIPTION */
+
+.app-description p {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #253137;
+}
+
+.app-description p:first-of-type {
+    margin-top: 0;
+}
+
+.app-description p:last-of-type {
+    margin-bottom: 0;
+}
+
+.app-banner {
+    width: 100%;
+}
+
+/* PRICE TAG */
+
+.pricetag-box {
+    margin: 10px 0 0 0;
+    height: 30px;
+}
+
+.pricetag-box > p:first-of-type {
+    font-family: "Bariol", sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0 10px 0 0;
+    color: #445963;
+    text-transform: uppercase;
+    float: left;
+    width: 135px;
+}
+
+.pricetag {
+    background: url(svg/pricetag.svg) no-repeat;
+    height: 30px;
+    width: 150px;
+    float: left;
+}
+
+.pricetag p {
+    line-height: 30px;
+    padding-left: 30px;
+    margin: 0;
+    font-family: "Roboto Light", sans-serif;
+    color: white;
+    font-size: 18px;
+}
+
+/* MORE DEALS BUTTON */
+
+.btn_more_deals {
+    background-color: #536d79;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px  20px 20px 0;
+    float: right;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26); /* Source: http://hawkee.com/snippet/16153/ */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn_more_deals:active {
+      box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    height: 80px;
+    background-color: #253137;
+    box-shadow: 0 8px 9px rgba(0,0,0,0.23) inset;
+    box-sizing: border-box;
+}
+
+body div.circleButton {
+    background: #778f9b url(svg/settings.svg) no-repeat center center;
+    background-size: 50%;
+    position: absolute;
+    bottom: 50px;
+    left: 120px;
+    z-index: 10;
+}
+
+footer p {
+    height: 100%;
+    line-height: 80px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 22px;
+    font-family: "Bariol", sans-serif;
+}
+
+footer p:first-of-type {
+    font-weight: 100;
+    margin: 0 0 0 220px;
+    float: left;
+}
+
+footer p:last-of-type {
+    font-weight: 100;
+    margin: 0 50px 0 0;
+    float: right;
+}
+
+@media only screen and (max-width: 1700px) {
+    .col-1 article:last-of-type {
+        margin-right: 0;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .page-header, .col-1 article {
+        margin-right: 50px;
+    }
+    
+    .provider-entry.double-column {
+        width: 1010px;
+    }
+    
+    .col-1, .col-2, .col-3, .page-header {
+        margin-right: 0;
+    }
+    
+    .col-2 {
+        margin-left: 50px;
+    }
+}
+
+@media only screen and (max-width: 1150px) {
+    .col-1, .col-2, .col-3 {
+        margin: 0 auto !important;
+    }
+    
+    .page-header {
+        margin-right: 0;
+    }
+
+    .provider-entry.double-column {
+        min-width: 480px;
+        width: 480px;
+    }
+
+    .double-column .app-list {
+        -webkit-column-count: 1;
+           -moz-column-count: 1;
+                column-count: 1;
+        -webkit-column-width: 100%;
+           -moz-column-width: 100%;
+                column-width: 100%;
+    }
+    
+    main {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        padding: 40px 0 20px 0;
+    }
+    
+    body div.circleButton {
+        left: 40px;
+    }
+
+    footer p:first-of-type {
+        margin: 0 0 0 20%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .provider-entry, .page-header {
+        width: 90vw !important;
+        min-width: 90vw;
+    }
+    
+    .provider-entry.double-column {
+        min-width: inherit;
+        width: auto;
+    }
+    
+    .page-header > h1 {
+        font-size: 90px;
+    }
+    
+    .page-header ul {
+        width: 60%;
+    }
+    
+    .app-list .pricetag-box {
+        float: right;
+        height: auto;
+        width: auto;
+    }
+    
+    footer {
+        height: 160px;
+        padding: 60px 0 0 0;
+    }
+
+    body div.circleButton {
+        bottom: 130px;
+        left: calc(50% - 30px);
+    }
+
+    footer p {
+        height: 30px;
+        line-height: 30px;
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+
+    footer p:first-of-type {
+        margin: 0;
+        float: none;
+    }
+
+    footer p:last-of-type {
+        margin: 0;
+        float: none;
+    }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 600px) {
+    .page-header ul {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .app-list .pricetag-box {
+        padding-top: 10px;
+    }
+    
+    .checkbox-group {
+        height: auto;
+    }
+    
+    .pricetag {
+        float: right;
+    }
+}
