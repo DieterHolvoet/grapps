@@ -3,7 +3,7 @@
 
 /* Giveaway of the Day (Android/iPhone) */
 
-var gotd = new Provider("gotd", "svg/provider_logo/giveawayoftheday.svg");
+var gotd = new Provider("gotd", "svg/provider_logo/giveawayoftheday.svg", null);
 
 gotd.appshandler = function(data, platform) {
     this.appshandler.wait = $.Deferred();

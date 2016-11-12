@@ -8,6 +8,7 @@ var Preferences = (function() {
     }
 
     Preferences.loadProvider = function() {
+
         if(localStorage.getItem('preference_amazon')) {
             amazon.preference = JSON.parse(localStorage.getItem('preference_amazon'));
             $("#input-check-amazon").prop("checked", amazon.preference);

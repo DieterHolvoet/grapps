@@ -3,7 +3,7 @@
 
 /* AppShopper (iPhone) */
 
-var appshopper = new Provider("appshopper", "svg/provider_logo/appshopper.svg");
+var appshopper = new Provider("appshopper", "svg/provider_logo/appshopper.svg", null);
 
 appshopper.handler = function(data, platform) {
     this.handler.wait = $.Deferred();

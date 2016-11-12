@@ -3,7 +3,7 @@
 
 /* Amazon Free App Of The Day */
 
-var amazon = new Provider("amazon", "svg/provider_logo/amazon_appstore.svg");
+var amazon = new Provider("amazon", "svg/provider_logo/amazon_appstore.svg", "http://www.amazon.com/s/node=2446009011");
 
 amazon.featappshandler = function(data) {
     this.featappshandler.wait = $.Deferred();
@@ -82,16 +82,5 @@ amazon.success = function(data) {
                 });
             } 
         });
-    });
-};
-
-amazon.load = function() {
-    $.ajax({
-        url: 'crosscall.php',
-        data: {url: "http://www.amazon.com/s/node=2446009011"},
-        type: 'POST',
-        success: function(data) {
-            amazon.success(data);
-        }
     });
 };

@@ -105,11 +105,11 @@ var App = (function() {
                     break;
 
                 case "windows":
-                    myappfree.addEntry(".col-2", "single-column");
+                    myappfree.addEntry(".col-1", "single-column");
                     myappfree.load();
 
-                    appdeals.addEntry(".col-3", "single-column");
-                    appdeals.load();
+                    windowsstoredeals.addEntry(".col-2", "double-column");
+                    windowsstoredeals.load();
 
                     break;
 

@@ -4,9 +4,10 @@
 var Provider = (function() {
     
     // Constructor
-    function Provider(name, logo) {
+    function Provider(name, logo, url) {
         this.name = name;
         this.logo = logo;
+        this.url = url;
         this.preference = true;
         this.featapps = [];
         this.apps = [];
@@ -18,7 +19,7 @@ var Provider = (function() {
     // SVG source: http://codepen.io/mrrocks/pen/EiplA
     Provider.prototype.addEntry = function(location, columns) {
         if(this.preference) {
-            $("<article class=\'provider-entry " + columns + " " + this.name + " clearfix\'><header class=\'provider-header\'><img class=\'provider-logo\' src=\'" + this.logo + "'></img>" +
+            $("<article class=\'provider-entry " + columns + " " + this.name + " clearfix\'><header class=\'provider-header\'><img class=\'provider-logo\' src=\'" + this.logo + "'>" +
               "<svg class=\'spinner\' width=\'65px\' height=\'65px\' viewBox=\'0 0 66 66\' xmlns=\'http://www.w3.org/2000/svg\'><circle class=\'path\' fill=\'none\' stroke-width=\'6\' stroke-linecap=\'round\' cx=\'33\' cy=\'33\' r=\'30\'></circle></svg>" +
               "</header><div class=\'provider-body\'></div></article>").appendTo($(location));
         }
@@ -58,6 +59,10 @@ var Provider = (function() {
 
                 case "appdeals":
                     $button.prop("href", "http://www.appdealswp.com/");
+                    break;
+
+                case "windowsstoredeals":
+                    $button.prop("href", "https://windowsstore.deals");
                     break;
 
                 default:
@@ -116,6 +121,18 @@ var Provider = (function() {
             $(location + " .provider-body").slideDown({
                 easing: "easeInOutQuint", duration: 700
             });
+        });
+    };
+
+    Provider.prototype.load = function() {
+        var provider = this;
+        $.ajax({
+            url: 'crosscall.php',
+            data: {url: provider.url},
+            type: 'POST',
+            success: function(html) {
+                provider.success(html);
+            }
         });
     };
         

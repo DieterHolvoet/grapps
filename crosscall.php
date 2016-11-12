@@ -25,7 +25,7 @@ SOFTWARE.
 ------------------------------------------------------------------------------
 */
 
-if($_SERVER['SERVER_NAME'] != parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) ) exit('Ongeldige request.');//check if request is local
+// if($_SERVER['SERVER_NAME'] != parse_url($_SERVER['HTTP_REFERER'], PHP_URL_HOST) ) exit('Ongeldige request.');//check if request is local
 if(empty($_POST['url'])) exit('Ongeldige request. Verstuur een url mee via POST, bv: {"url":"http://www.example.com/"}');//check if url is passed via POST
 $url = $_POST['url'];
 if(!filter_var($url, FILTER_VALIDATE_URL, FILTER_FLAG_HOST_REQUIRED )) exit('Ongeldige URL. Verstuur een geldige URL, bijvoorbeeld "http://www.example.com/"'); //check if valid url
@@ -33,6 +33,7 @@ if($_SERVER['SERVER_NAME'] == parse_url($url, PHP_URL_HOST) ) exit('Deze URL is 
 
 $ch = curl_init($url);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // fix for https
 $result = curl_exec_follow($ch);
 curl_close($ch);
 echo Encoding::toUTF8($result);

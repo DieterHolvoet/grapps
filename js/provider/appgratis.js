@@ -3,7 +3,7 @@
 
 /* AppGratis (Android/iPhone) */
 
-var appgratis = new Provider("appgratis", "svg/provider_logo/appgratis_flat.svg");
+var appgratis = new Provider("appgratis", "svg/provider_logo/appgratis_flat.svg", null);
 
 appgratis.handler = function(data, platform) {
     this.handler.wait = $.Deferred();
@@ -73,10 +73,10 @@ appgratis.load = function(platform) {
             switch(platform) {
                 case "android":
                     return {url: "http://appgratis.com/android"};
-                    
+
                 case "iphone":
                     return {url: "http://appgratis.com"};
-                    
+
                 case "ipad":
                     return {url: "http://appgratis.com/ipad"};
             }

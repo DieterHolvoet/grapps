@@ -3,7 +3,7 @@
 
 /* AppDeals */
 
-var appdeals = new Provider("appdeals", "svg/provider_logo/appdeals.svg");
+var appdeals = new Provider("appdeals", "svg/provider_logo/appdeals.svg", "http://www.appdealswp.com");
 
 appdeals.handler = function(data) {
     this.handler.wait = $.Deferred();
@@ -39,16 +39,5 @@ appdeals.success = function(data) {
         
         appdeals.addFallback(appdeals.apps, "android", ".col-3");
         appdeals.finish(".col-3");
-    });
-};
-
-appdeals.load = function() {
-    $.ajax({
-        url: 'crosscall.php',
-        data: {url: "http://www.appdealswp.com"},
-        type: 'POST',
-        success: function(data) {
-            appdeals.success(data);
-        }
     });
 };

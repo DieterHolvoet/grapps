@@ -38,7 +38,7 @@ $(document).ready(function() {
     }
     
     // Load articles
-    App.loadAll(Filter.active);
+    App.loadAll();
     
     // Load the provider preferences from Local Storage    
     Preferences.loadProvider();

@@ -3,7 +3,7 @@
 
 /* MyAppFree */
 
-var myappfree = new Provider("myappfree", "svg/provider_logo/myappfree.svg");
+var myappfree = new Provider("myappfree", "svg/provider_logo/myappfree.svg", "http://www.myappfree.it");
 
 myappfree.handler = function(data) {
     this.handler.wait = $.Deferred();
@@ -27,21 +27,10 @@ myappfree.handler = function(data) {
 myappfree.success = function(data) {
     myappfree.handler(data);
     $.when( myappfree.handler.wait ).done(function() {
-        myappfree.addAppList(".col-2");
+        myappfree.addAppList(".col-1");
         for(var i = 0; i < myappfree.apps.length; i++) {
-            myappfree.apps[i].append(".col-2", myappfree, "app-list");
+            myappfree.apps[i].append(".col-1", myappfree, "app-list");
         }
-        myappfree.finish(".col-2");
-    });
-};
-
-myappfree.load = function() {
-    $.ajax({
-        url: 'crosscall.php',
-        data: {url: "http://www.myappfree.it"},
-        type: 'POST',
-        success: function(data) {
-            myappfree.success(data);
-        }
+        myappfree.finish(".col-1");
     });
 };
