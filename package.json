@@ -1,0 +1,24 @@
+{
+  "name": "grapps",
+  "version": "1.0.0",
+  "description": "1.4",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DieterHolvoet/grapps.git"
+  },
+  "author": "Dieter Holvoet",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/DieterHolvoet/grapps/issues"
+  },
+  "homepage": "https://github.com/DieterHolvoet/grapps#readme",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0"
+  }
+}

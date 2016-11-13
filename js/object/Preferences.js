@@ -1,138 +1,39 @@
-/* jshint browser: true, jquery: true */
-/* global amazon, appdeals, appgratis, appshopper, gotd, myappfree, Filter */
+"use strict";
 
-var Preferences = (function() {
-    
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Preferences = function () {
     function Preferences() {
-
+        _classCallCheck(this, Preferences);
     }
 
-    Preferences.loadProvider = function() {
-
-        if(localStorage.getItem('preference_amazon')) {
-            amazon.preference = JSON.parse(localStorage.getItem('preference_amazon'));
-            $("#input-check-amazon").prop("checked", amazon.preference);
-            
-        } else {
-            localStorage.setItem('preference_amazon', 'true');
-        }
-
-        if(localStorage.getItem('preference_appdeals')) {
-            appdeals.preference = JSON.parse(localStorage.getItem('preference_appdeals'));
-            $("#input-check-appdeals").prop("checked", appdeals.preference);
-            
-        } else {
-            localStorage.setItem('preference_appdeals', 'true');
-        }
-
-        if(localStorage.getItem('preference_appgratis')) {
-            appgratis.preference = JSON.parse(localStorage.getItem('preference_appgratis'));
-            $("#input-check-appgratis").prop("checked", appgratis.preference);
-            
-        } else {
-            localStorage.setItem('preference_appgratis', 'true');
-        }
-
-        if(localStorage.getItem('preference_appshopper')) {
-            appshopper.preference = JSON.parse(localStorage.getItem('preference_appshopper'));
-            $("#input-check-appshopper").prop("checked", appshopper.preference);
-            
-        } else {
-            localStorage.setItem('preference_appshopper', 'true');
-        }
-
-        if(localStorage.getItem('preference_gotd')) {
-            gotd.preference = JSON.parse(localStorage.getItem('preference_gotd'));
-            $("#input-check-gotd").prop("checked", gotd.preference);
-            
-        } else {
-            localStorage.setItem('preference_gotd', 'true');
-        }
-
-        if(localStorage.getItem('preference_myappfree')) {
-            myappfree.preference = JSON.parse(localStorage.getItem('preference_myappfree'));
-            $("#input-check-myappfree").prop("checked", myappfree.preference);
-            
-        } else {
-            localStorage.setItem('preference_myappfree', 'true');
-        }
-    };
-    
-    // Source: http://goo.gl/8KeSwF
-    Preferences.saveProvider = function(checkbox) {
-        var checked = checkbox.is(":checked");      // check checkbox status
-
-        if (checkbox) {
-            switch($(checkbox).attr("id")) {
-                case "input-check-amazon":
-                    amazon.preference = !checked;
-                    localStorage.setItem('preference_amazon', JSON.stringify(amazon.preference));
-                    break;
-
-                case "input-check-appdeals":
-                    appdeals.preference = !checked;
-                    localStorage.setItem('preference_appdeals', JSON.stringify(appdeals.preference));
-                    break;
-
-                case "input-check-appgratis":
-                    appgratis.preference = !checked;
-                    localStorage.setItem('preference_appgratis', JSON.stringify(appgratis.preference));
-                    break;
-
-                case "input-check-appshopper":
-                    appshopper.preference = !checked;
-                    localStorage.setItem('preference_appshopper', JSON.stringify(appshopper.preference));
-                    break;
-
-                case "input-check-gotd":
-                    gotd.preference = !checked;
-                    localStorage.setItem('preference_gotd', JSON.stringify(gotd.preference));
-                    break;
-
-                case "input-check-myappfree":
-                    myappfree.preference = !checked;
-                    localStorage.setItem('preference_myappfree', JSON.stringify(myappfree.preference));
-                    break;
-
-                default:
-                    console.error("Checkbox is missing an ID");
-                    break;
-            }
-        }
-        checkbox.prop("checked", !checked);
-    };
-    
-    Preferences.getDefaultFilter = function() {
-        return localStorage.getItem('defaultFilter');
-    };
-    
-    // Load the default filter from Local Storage
-    Preferences.loadFilter = function() {
-        if(Preferences.getDefaultFilter()) {
-            Filter.setActive(Preferences.getDefaultFilter());
-            
-            switch(Filter.active) {
+    _createClass(Preferences, null, [{
+        key: "loadInitialFilter",
+        value: function loadInitialFilter() {
+            switch (Platform.initial) {
                 case "android":
                     $("#input-radio-iphone").prop("checked", false);
                     $("#input-radio-windows").prop("checked", false);
                     $("#input-radio-ipad").prop("checked", false);
                     $("#input-radio-android").prop("checked", true);
                     break;
-                    
+
                 case "iphone":
                     $("#input-radio-windows").prop("checked", false);
                     $("#input-radio-ipad").prop("checked", false);
                     $("#input-radio-android").prop("checked", false);
                     $("#input-radio-iphone").prop("checked", true);
                     break;
-                    
+
                 case "windows":
                     $("#input-radio-iphone").prop("checked", false);
                     $("#input-radio-ipad").prop("checked", false);
                     $("#input-radio-android").prop("checked", false);
                     $("#input-radio-windows").prop("checked", true);
                     break;
-                    
+
                 case "ipad":
                     $("#input-radio-iphone").prop("checked", false);
                     $("#input-radio-windows").prop("checked", false);
@@ -140,31 +41,68 @@ var Preferences = (function() {
                     $("#input-radio-ipad").prop("checked", true);
                     break;
             }
-            
-        } else {
-            Filter.setActive('android');
         }
-    };
-    
-    Preferences.saveFilter = function(id) {
-        switch(id) {
-            case "input-radio-android":
-                localStorage.setItem('defaultFilter', "android");
-                break;
-                
-            case "input-radio-iphone":
-                localStorage.setItem('defaultFilter', "iphone");
-                break;
-                
-            case "input-radio-windows":
-                localStorage.setItem('defaultFilter', "windows");
-                break;
-                
-            case "input-radio-ipad":
-                localStorage.setItem('defaultFilter', "ipad");
-                break;
+    }, {
+        key: "loadActiveProviders",
+        value: function loadActiveProviders() {
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = Providers.all[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var provider = _step.value;
+
+                    $("#input-check-" + provider.name).prop("checked", provider.preference);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
         }
-    };
-        
+    }, {
+        key: "saveActiveProvider",
+        value: function saveActiveProvider(providerName, isActive) {
+            var _iteratorNormalCompletion2 = true;
+            var _didIteratorError2 = false;
+            var _iteratorError2 = undefined;
+
+            try {
+                for (var _iterator2 = Providers.all[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+                    var provider = _step2.value;
+
+                    if (provider.name = providerName) {
+                        provider.preference = !isActive;
+                    }
+                }
+            } catch (err) {
+                _didIteratorError2 = true;
+                _iteratorError2 = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                        _iterator2.return();
+                    }
+                } finally {
+                    if (_didIteratorError2) {
+                        throw _iteratorError2;
+                    }
+                }
+            }
+        }
+    }]);
+
     return Preferences;
-})();
+}();
+
+//# sourceMappingURL=Preferences.js.map

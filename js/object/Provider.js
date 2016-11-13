@@ -1,140 +1,139 @@
-/* jshint browser: true, jquery: true */
-/* global Filter, Grapps */
+'use strict';
 
-var Provider = (function() {
-    
-    // Constructor
-    function Provider(name, logo, url) {
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Provider = function () {
+    function Provider(name, logo, url, moredeals, platform, location, appearance) {
+        _classCallCheck(this, Provider);
+
         this.name = name;
         this.logo = logo;
         this.url = url;
-        this.preference = true;
-        this.featapps = [];
+        this.moredeals = moredeals;
+        this.platform = platform;
+        this.location = location;
+        this.appearance = appearance;
         this.apps = [];
-        this.apps_2 = [];
-        this.apps_3 = [];
+
+        Providers.add(this);
     }
-    
+
     // Add new provider entry
     // SVG source: http://codepen.io/mrrocks/pen/EiplA
-    Provider.prototype.addEntry = function(location, columns) {
-        if(this.preference) {
-            $("<article class=\'provider-entry " + columns + " " + this.name + " clearfix\'><header class=\'provider-header\'><img class=\'provider-logo\' src=\'" + this.logo + "'>" +
-              "<svg class=\'spinner\' width=\'65px\' height=\'65px\' viewBox=\'0 0 66 66\' xmlns=\'http://www.w3.org/2000/svg\'><circle class=\'path\' fill=\'none\' stroke-width=\'6\' stroke-linecap=\'round\' cx=\'33\' cy=\'33\' r=\'30\'></circle></svg>" +
-              "</header><div class=\'provider-body\'></div></article>").appendTo($(location));
-        }
-    };
-    
-    // Add new app list within a provider entry
-    Provider.prototype.addAppList = function(location) {
-        if(this.preference) {
-            location = location + " ." + this.name;
-            $("<section class=\'app-list\'><a class=\'btn_more_deals\' target=\'blank\'>More deals</a></section>").appendTo($(location + " .provider-body"));
 
-            var $button = $(location + " .provider-body .btn_more_deals");
-            switch(this.name) {
-                case "gotd":
-                    if(Filter.active == "android") {
-                        $button.prop("href", "http://android.giveawayoftheday.com/");
-                    } else if(Filter.active == "iphone") {
-                        $button.prop("href", "http://iphone.giveawayoftheday.com/");
+
+    _createClass(Provider, [{
+        key: 'addEntry',
+        value: function addEntry() {
+            if (this.preference) {
+                $('.' + this.location).append('<article class=\'provider-entry ' + this.columns + ' ' + this.name + ' clearfix\'>\n                    <header class=\'provider-header\'>\n                        <img class=\'provider-logo\' src=\'' + this.logo + '\'>\n                        <svg class=\'spinner\' width=\'65px\' height=\'65px\' viewBox=\'0 0 66 66\' xmlns=\'http://www.w3.org/2000/svg\'><circle class=\'path\' fill=\'none\' stroke-width=\'6\' stroke-linecap=\'round\' cx=\'33\' cy=\'33\' r=\'30\'></circle></svg>\n                    </header>\n                    <div class=\'provider-body\'></div>\n                </article>');
+            }
+        }
+    }, {
+        key: 'addAppList',
+
+
+        // Add new app list within a provider entry
+        value: function addAppList() {
+            if (this.preference) {
+                $('.' + this.location + ' .' + this.name + ' .provider-body').append('<section class=\'app-list\'><a class=\'btn_more_deals\' href=' + this.moredeals + ' target=\'blank\'>More deals</a></section>');
+            }
+        }
+    }, {
+        key: 'addFallback',
+        value: function addFallback() {
+            $('.' + this.location + ' .' + this.name + ' .provider-body').append("<p class=\'noapps\'>Unfortunately, there are no apps to display here today.<br>Come back tomorrow!</p>");
+        }
+    }, {
+        key: 'load',
+        value: function load() {
+            var _this = this;
+
+            var provider = this;
+            this.addEntry();
+
+            return ajax({
+                url: 'crosscall.php',
+                data: { url: provider.url },
+                type: 'POST'
+            }).then(function (html) {
+                return new Promise(function (resolve) {
+                    provider.handler(html);
+
+                    if (provider.apps.length == 0) {
+                        provider.addFallback();
+                    } else {
+                        if (_this.appearance == "app-list") {
+                            provider.addAppList();
+                        }
+
+                        $.each(provider.apps, function (i, app) {
+                            app.appendToPage();
+                        });
                     }
-                    break;
 
-                case "amazon":
-                    $button.prop("href", "http://www.amazon.com/s/node=2446009011");
-                    break;
-
-                case "appshopper":
-                    if(Filter.active == "iphone") {
-                        $button.prop("href", "http://appshopper.com/iphone/prices/free/");
-                    } else if(Filter.active == "ipad") {
-                        $button.prop("href", "http://appshopper.com/ipad/prices/free/");
-                    }
-                    break;
-
-                case "myappfree":
-                    $button.prop("href", "http://www.myappfree.it/");
-                    break;
-
-                case "appdeals":
-                    $button.prop("href", "http://www.appdealswp.com/");
-                    break;
-
-                case "windowsstoredeals":
-                    $button.prop("href", "https://windowsstore.deals");
-                    break;
-
-                default:
-                    console.error("Wrong calling of newAppList function");
-                    break;
-            }
+                    resolve();
+                });
+            }, function (error) {
+                return console.error("Error loading data: " + error);
+            }).then(function () {
+                return provider.finish();
+            });
         }
-    };
-    
-    Provider.prototype.addFallback = function(apps, platform, location) {
-        var anyApp = false;
-        $.each(apps, function(i, eventItem) {
-            if($(eventItem).prop("platform") === platform) {
-                anyApp = true;
-            }
-        });
-        
-        if(!anyApp) {
-            var str;
-            
-            if(this.name === "amazon") {
-                str = "Unfortunately, there is no ongoing Free App of the Day Bundle. Try again later!";
-            } else {
-                str = "Unfortunately, there are no apps to display here today.<br>Come back tomorrow!";
-            }
-            
-            $("<p class=\'noapps\'>" + str + "</p>").appendTo(location + " ." + this.name + " .provider-body");
-            return true;
-        }
-        
-        return false;
-    };
-    
-    Provider.prototype.finish = function(location) {
-        var name = this.name;
-        $.when( Grapps.appendWait ).done(function() {
+    }, {
+        key: 'finish',
+        value: function finish() {
+            console.log('Finished loading ' + this.name + ' provider.');
+
             // Re-arrange the articles for the tablet layout
-            if($(window).width() < 1500 && $(window).width() > 1150) {
-                if(Filter.active === "ipad") {
-                    $(location).children().css("float", "left");
+            if ($(window).width() < 1500 && $(window).width() > 1150) {
+                if (Platform.active === "ipad") {
+                    $('.' + this.location).children().css("float", "left");
                 }
 
-                if(location === ".col-2") {
-                    $(location + " ." + name).appendTo(".col-1");
-                    location = ".col-1";
-
-                } else if(location === ".col-3") {
-                    $(location + " ." + name).appendTo(".col-2");
-                    location = ".col-2";
-                }
+                /*if(this.location === "col-2") {
+                    $(`.${this.location} .${this.name}`).appendTo(".col-1");
+                    this.location = "col-1";
+                 } else if(this.location === "col-3") {
+                    $(`.${this.location} .${this.name}`).appendTo(".col-2");
+                    this.location = "col-2";
+                }*/
             }
 
-            location = location + " ." + name;
-            $(location + " .spinner").fadeOut(200);              
-            $(location).height($(location).height());
-            $(location + " .provider-body").slideDown({
+            $('.' + this.location + ' .' + this.name + ' .spinner').fadeOut(200);
+            $('.' + this.location + ' .' + this.name).height($('.' + this.location + ' .' + this.name).height());
+            $('.' + this.location + ' .' + this.name + ' .provider-body').slideDown({
                 easing: "easeInOutQuint", duration: 700
             });
-        });
-    };
+        }
+    }, {
+        key: 'preference',
+        get: function get() {
+            var pref = JSON.parse(localStorage.getItem('preference_' + this.name));
 
-    Provider.prototype.load = function() {
-        var provider = this;
-        $.ajax({
-            url: 'crosscall.php',
-            data: {url: provider.url},
-            type: 'POST',
-            success: function(html) {
-                provider.success(html);
+            if (pref == null) {
+                localStorage.setItem('preference_' + this.name, true);
+                return true;
+            } else {
+                return pref;
             }
-        });
-    };
-        
+        },
+        set: function set(preference) {
+            localStorage.setItem('preference_' + this.name, JSON.stringify(preference));
+        }
+    }, {
+        key: 'apps',
+        get: function get() {
+            return this._apps;
+        },
+        set: function set(apps) {
+            this._apps = apps;
+        }
+    }]);
+
     return Provider;
-})();
+}();
+
+//# sourceMappingURL=Provider.js.map
