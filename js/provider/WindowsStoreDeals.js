@@ -44,6 +44,8 @@ var WindowsStoreDeals = function (_Provider) {
                 app.op = result.oldprice;
                 app.np = result.currency + result.newprice;
 
+                if (app.np === "$0") app.np = "FREE";
+
                 self.apps.push(app);
             });
         }
