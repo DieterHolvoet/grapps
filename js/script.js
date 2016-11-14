@@ -19,10 +19,19 @@ $(function () {
 
     // Load preferences from Local Storage
     Preferences.loadInitialFilter();
-    Preferences.loadActiveProviders();
 
+    // Add provider checkboxes to settings
+    for (var name in Providers.map) {
+        if (!Providers.map.hasOwnProperty(name)) {
+            continue;
+        }
+
+        $('.settings-group').eq(1).append('<div class="checkbox-group"> \n                <input type="checkbox" id="input-check-' + name + '" ' + (Preferences.isProviderEnabled(name) ? 'checked' : '') + '> \n                <label for="input-check-' + name + '">\n                    <span class="check"></span>\n                    <span class="box"></span>\n                     ' + Providers.map[name] + '\n                 </label>\n            </div>');
+    }
+
+    // Platform buttons handler
     $(".page-header li").on('click', function () {
-        Platform.active = $(this).attr('id').replace("filter-", "");
+        if (!Platform.locked) Platform.active = $(this).attr('id').replace("filter-", "");
     });
 
     // Platform settings
@@ -31,19 +40,24 @@ $(function () {
     });
 
     // Provider settings
-    $(".checkbox-group").click(function () {
-        var $checkbox = $(this).find(":checkbox");
-        var provider = $(this).attr("id").replace("input-check-", "");
-        var isChecked = $checkbox.is(":checked");
+    $(".checkbox-group").click(function (evt) {
+        evt.stopPropagation();
+        evt.preventDefault();
 
-        $checkbox.prop("checked", !isChecked);
-        Preferences.saveActiveProvider(provider, isChecked);
+        var $checkbox = $(this).find(":checkbox"),
+            name = $checkbox.attr("id").replace("input-check-", ""),
+            checked = $checkbox.is(":checked"),
+            test = Providers.all;
+
+        $checkbox.prop("checked", !checked);
+        Preferences.setProviderEnabled(name, !checked);
     });
 
     $('.checkbox-group :checkbox').click(function () {
         $(this).parent('.checkbox-group').click();
     });
 
+    // Settings button handler
     $("#settingsButton").on('click', function () {
         $("html, body").animate({ scrollTop: 0 }, "slow");
         $(".header-hidden").slideToggle({ easing: "easeInOutQuint", duration: 1000 });

@@ -66,7 +66,7 @@ var AmazonSpecialDiscounts = function (_Amazon) {
                 if (app.op.length == 0) app.op = undefined;
 
                 self.apps.push(app);
-                if (i === 3) return;
+                return i < 4;
             });
         }
     }]);

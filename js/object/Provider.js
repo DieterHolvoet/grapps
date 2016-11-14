@@ -52,6 +52,7 @@ var Provider = function () {
             var _this = this;
 
             var provider = this;
+            this.preference = Preferences.isProviderEnabled(this.name);
             this.addEntry();
 
             return ajax({
@@ -107,21 +108,6 @@ var Provider = function () {
             $('.' + this.location + ' .' + this.name + ' .provider-body').slideDown({
                 easing: "easeInOutQuint", duration: 700
             });
-        }
-    }, {
-        key: 'preference',
-        get: function get() {
-            var pref = JSON.parse(localStorage.getItem('preference_' + this.name));
-
-            if (pref == null) {
-                localStorage.setItem('preference_' + this.name, true);
-                return true;
-            } else {
-                return pref;
-            }
-        },
-        set: function set(preference) {
-            localStorage.setItem('preference_' + this.name, JSON.stringify(preference));
         }
     }, {
         key: 'apps',

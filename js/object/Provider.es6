@@ -45,6 +45,7 @@ class Provider {
 
     load() {
         var provider = this;
+        this.preference = Preferences.isProviderEnabled(this.name);
         this.addEntry();
 
         return ajax({
@@ -102,22 +103,6 @@ class Provider {
         $(`.${this.location} .${this.name} .provider-body`).slideDown({
             easing: "easeInOutQuint", duration: 700
         });
-    }
-
-    get preference() {
-        var pref = JSON.parse(localStorage.getItem(`preference_${this.name}`));
-
-        if(pref == null) {
-            localStorage.setItem(`preference_${this.name}`, true);
-            return true;
-
-        } else {
-            return pref;
-        }
-    }
-
-    set preference(preference) {
-        localStorage.setItem(`preference_${this.name}`, JSON.stringify(preference));
     }
 
     get apps() {

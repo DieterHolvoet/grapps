@@ -21,7 +21,7 @@ class AppOfTheDay extends Provider {
         app.icon = $data.find(".icon-app").attr("data-original");
         app.title = $data.find("a.app-name").first().text().trim();
         app.url = $data.find(".app-name").attr("href");
-        app.op = $data.find(".price-strike span").text();
+        app.op = $data.find(".price-strike span").first().text();
         app.description = $data.find(".description").text();
 
         if(app.op.length == 0) app.op = undefined;

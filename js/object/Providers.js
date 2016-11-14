@@ -62,6 +62,21 @@ var Providers = function () {
         set: function set(providers) {
             this._providers = providers;
         }
+    }, {
+        key: "map",
+        get: function get() {
+            return {
+                amazon: "Amazon",
+                appgratis: "AppGratis",
+                appoftheday: "App Of The Day",
+                appsales: "AppSales",
+                appshopper: "AppShopper",
+                gotd: "Giveaway Of The Day",
+                iosnoops: "iOSnoops",
+                myappfree: "MyAppFree",
+                windowsstoredeals: "Windows Store Deals"
+            };
+        }
     }]);
 
     return Providers;

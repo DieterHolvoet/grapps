@@ -33,17 +33,19 @@ class Preferences {
         }
     }
 
-    static loadActiveProviders() {
-        for(var provider of Providers.all) {
-            $(`#input-check-${provider.name}`).prop("checked", provider.preference);
+    static isProviderEnabled(name) {
+        var pref = JSON.parse(localStorage.getItem(`preference_${name}`));
+
+        if(pref == null) {
+            localStorage.setItem(`preference_${name}`, true);
+            return true;
+
+        } else {
+            return pref;
         }
     }
 
-    static saveActiveProvider(providerName, isActive) {
-        for(var provider of Providers.all) {
-            if(provider.name = providerName) {
-                provider.preference = !isActive;
-            }
-        }
+    static setProviderEnabled(name, preference) {
+        localStorage.setItem(`preference_${name}`, JSON.stringify(preference));
     }
 }
