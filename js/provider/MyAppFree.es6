@@ -22,9 +22,7 @@ class MyAppFree extends Provider {
             var $eventItem = $(eventItem);
             var app = new App(self);
 
-            app.title = $eventItem.find("p").contents().filter(function() {
-                return this.nodeType == 3;
-            })[0].nodeValue.trim();
+            app.title = $eventItem.find("p").textNode();
             app.icon = $eventItem.find(".img-responsive").attr("source");
             app.url = $eventItem.find("a").attr("href");
             app.op = $eventItem.find("p span").text();

@@ -2,12 +2,6 @@
 
 $.ajaxSetup({ async: true });
 
-function ajax(options) {
-    return new Promise(function (resolve, reject) {
-        $.ajax(options).done(resolve).fail(reject);
-    });
-}
-
 $(function () {
 
     // Set filter and load articles
@@ -63,5 +57,31 @@ $(function () {
         $(".header-hidden").slideToggle({ easing: "easeInOutQuint", duration: 1000 });
     });
 });
+
+// Helpers
+
+$.fn.extend({
+    textNode: function textNode() {
+        var node = this.contents().filter(function () {
+            return this.nodeType == 3;
+        })[0];
+
+        if (node !== undefined) return node.nodeValue.trim();else return null;
+    },
+
+    exists: function exists() {
+        return this.length > 0;
+    }
+});
+
+function ajax(options) {
+    return new Promise(function (resolve, reject) {
+        $.ajax(options).done(resolve).fail(reject);
+    });
+}
+
+function empty(value) {
+    return typeof value == 'string' && !value.trim() || typeof value == 'undefined' || value === null;
+}
 
 //# sourceMappingURL=script.js.map

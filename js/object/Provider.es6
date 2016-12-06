@@ -87,15 +87,6 @@ class Provider {
             if(Platform.active === "ipad") {
                 $(`.${this.location}`).children().css("float", "left");
             }
-
-            /*if(this.location === "col-2") {
-                $(`.${this.location} .${this.name}`).appendTo(".col-1");
-                this.location = "col-1";
-
-            } else if(this.location === "col-3") {
-                $(`.${this.location} .${this.name}`).appendTo(".col-2");
-                this.location = "col-2";
-            }*/
         }
 
         $(`.${this.location} .${this.name} .spinner`).fadeOut(200);

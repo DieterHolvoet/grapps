@@ -74,7 +74,8 @@ var Providers = function () {
                 gotd: "Giveaway Of The Day",
                 iosnoops: "iOSnoops",
                 myappfree: "MyAppFree",
-                windowsstoredeals: "Windows Store Deals"
+                windowsstoredeals: "Windows Store Deals",
+                playdealoftheweek: "Google Play Deal of the Week"
             };
         }
     }]);

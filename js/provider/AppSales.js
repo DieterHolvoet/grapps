@@ -48,6 +48,9 @@ var AppSales = function (_Provider) {
                 app.op = $eventItem.find(".sale-pricing .price-old").text();
                 app.np = $eventItem.find(".sale-pricing .price-new").text();
 
+                if (empty(app.op)) delete app.op;
+                if (empty(app.np)) delete app.np;
+
                 self.apps.push(app);
             });
         }

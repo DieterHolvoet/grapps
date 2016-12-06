@@ -32,7 +32,9 @@ var AppOfTheDay = function (_Provider) {
                 self = this,
                 app = new App(self);
 
-            $data = $data.find('.offer:not(.expired)').first();
+            $data = $data.find('.offer').filter(function (i) {
+                return $(this).find('a.link-app-free').exists();
+            }).first();
 
             app.icon = $data.find(".icon-app").attr("data-original");
             app.title = $data.find("a.app-name").first().text().trim();
