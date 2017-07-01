@@ -1,24 +1,57 @@
 {
   "name": "grapps",
-  "version": "1.0.0",
-  "description": "1.4",
+  "version": "1.4.0",
+  "description": "A website showcasing the content of several free-app-of-the-day websites",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --watch-poll --config ./config/webpack.dev.js",
+    "build": "webpack -p --config ./config/webpack.build.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DieterHolvoet/grapps.git"
   },
-  "author": "Dieter Holvoet",
+  "author": "Dieter Holvoet <dieter.holvoet@gmail.com>",
   "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/DieterHolvoet/grapps/issues"
   },
   "homepage": "https://github.com/DieterHolvoet/grapps#readme",
+  "dependencies": {
+    "babel-polyfill": "^6.23.0"
+  },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babelify": "^7.3.0"
-  }
+    "autoprefixer": "^6.7.3",
+    "babel-core": "^6.23.1",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-babili": "^0.0.11",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.15.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-loader": "^1.6.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "extract-text-webpack-plugin": "2.0.0-beta.4",
+    "file-loader": "^0.10.0",
+    "node-sass": "^4.5.0",
+    "postcss-loader": "^1.3.0",
+    "rucksack-css": "^0.9.1",
+    "sass-loader": "^6.0.1",
+    "style-loader": "^0.13.1",
+    "stylelint-webpack-plugin": "^0.6.0",
+    "webpack": "^2.2.1",
+    "webpack-dev-server": "^2.3.0"
+  },
+  "keywords": [
+    "grapps",
+    "free app of the day",
+    "appgratis",
+    "amazon",
+    "appstore",
+    "iosnoops"
+  ]
 }

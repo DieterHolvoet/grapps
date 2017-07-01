@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dieter Holvoet">
+    <title>Grapps - Free Apps of the Day</title>
+    
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="assets/favicon/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="assets/favicon/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="assets/favicon/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16.png">
+	<link rel="apple-touch-icon" href="assets/favicon/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="assets/favicon/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="assets/favicon/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="assets/favicon/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="assets/favicon/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="assets/favicon/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="assets/favicon/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="assets/favicon/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#536d79">
+	<meta name="msapplication-TileImage" content="favicon/favicon-144.png">
+	<meta name="msapplication-config" content="favicon/browserconfig.xml">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#536d79">
+    
+    <link rel="stylesheet" href="assets/styles.css">
+    
+    <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="assets/global.js"></script>
+</head>
+
+<body>
+    <main class="clearfix">
+        <div class="col-1 clearfix">
+            <header class="page-header">
+            <h1>grapps</h1>
+            <h2>Free Apps of the Day</h2>
+            <ul class="clearfix chooser">
+                <a><li id="filter-android" class="circleButton"></li></a>
+                <a><li id="filter-iphone" class="circleButton"></li></a>
+                <a><li id="filter-windows" class="circleButton"></li></a>
+                <a><li id="filter-ipad" class="circleButton"></li></a>
+            </ul>
+            <div class="header-hidden">
+                <section class="settings clearfix">
+                    <h1>Settings</h1>
+                    <form>
+                        <div class="settings-group">
+                            <h2>Default platform</h2>
+                            <div class="radio-group clearfix">
+                                <label class="radio">
+                                    <input type="radio" name="filter" id="input-radio-android" checked>
+                                    <span class="outer">
+                                        <span class="inner"></span>
+                                    </span>
+                                    Android
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="filter" id="input-radio-iphone">
+                                    <span class="outer">
+                                        <span class="inner"></span>
+                                    </span>
+                                    iPhone
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="filter" id="input-radio-windows">
+                                    <span class="outer">
+                                        <span class="inner"></span>
+                                    </span>
+                                    Windows
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" name="filter" id="input-radio-ipad">
+                                    <span class="outer">
+                                        <span class="inner"></span>
+                                    </span>
+                                    iPad
+                                </label>
+                            </div>
+                        </div>
+                        <div class="settings-group">
+                            <h2>Providers</h2>
+
+                        </div>
+                    </form>
+                    
+                </section>
+                <section class="about">
+                    <h1>About</h1>
+                    <p><span class="grapps">grapps</span> is a website showcasing the content of several free-app-of-the-day websites, including AppGratis, Giveaway of the Day, Amazon Appstore, etc. It was the result of an assignment which consisted of making a single-page webapp pulling and displaying content of other websites in a creative way.</p>
+                </section>
+                <section class="changelog">
+                    <h1>Changelog</h1>
+                    <h2>v1.0 (8 May 2015)</h2>
+                    <b>Initial release</b>
+                    <h2>v1.1 (23 August 2015)</h2>
+                    <b>Fixed:</b>
+                    <ul>
+                        <li>No margin between columns on smaller screens</li>
+                        <li>AppShopper website redesign support</li>
+                        <li>AppDeals 'FREE' instead of '€0'</li>
+                        <li>Various stylesheet optimalisations and fixes</li>
+                    </ul>
+                    <b>Added:</b>
+                    <ul>
+                        <li>Changelog</li>
+                    </ul>
+                    <h2>v1.2 (3 March 2016)</h2>
+                    <b>Fixed:</b>
+                    <ul>
+                        <li>myAppFree website redesign support</li>
+                        <li>Giveaway Of The Day website redesign support</li>
+                        <li>AppDeals website redesign support</li>
+                        <li>Fixed issue where the spinner wasn't disappearing</li>
+                        <li>Fixed issue where an empty app list still contained a 'More deals' button</li>
+                        <li>Object-oriented code cleanup</li>
+                    </ul>
+                    <b>Removed:</b>
+                    <ul>
+                        <li>Amazon Free App Of The Day (discontinued by Amazon in favor of Amazon Underground)</li>
+                    </ul>
+                    <h2>v1.3 (11 November 2016)</h2>
+                    <b>Fixed:</b>
+                    <ul>
+                        <li>A little bit of code optimisation</li>
+                    </ul>
+                    <b>Removed:</b>
+                    <ul>
+                        <li>AppDeals (website still exists, but no new content is added)</li>
+                    </ul>
+                    <b>Added</b>
+                    <ul>
+                        <li>Windows Store Deals (https://windowsstore.deals)</li>
+                    </ul>
+                    <h2>v1.4 (13 November 2016)</h2>
+                    <b>Fixed:</b>
+                    <ul>
+                        <li>Completely re-written from scratch using ES5 and ES6 Javascript features.</li>
+                        <li>Source code now available on GitHub!</li>
+                        <li>Fixed problems when spam clicking platform buttons.</li>
+                    </ul>
+                    <b>Added:</b>
+                    <ul>
+                        <li>Amazon Appstore Deals (Android)</li>
+                        <li>AppSales (Android)</li>
+                        <li>iOSnoops (iPad/iPhone)</li>
+                        <li>App Of The Day (Android/iPhone)</li>
+                    </ul>
+                </section>
+                <section>
+                    <a href="opdracht/index.html">More info</a>
+                </section>
+            </div>
+        </header>
+    </div>
+        <div class="col-2 clearfix"></div>
+        <div class="col-3 clearfix"></div>
+    </main>
+    <a><div class="circleButton" id="settingsButton"></div></a>
+    <footer>
+        <p>Made by Dieter Holvoet</p>
+        <p><span class="grapps">grapps</span> &copy; <script>document.write(new Date().getFullYear())</script></p>
+    </footer>
+</body>
+
+</html>
