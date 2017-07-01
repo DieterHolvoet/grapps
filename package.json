@@ -1,6 +1,6 @@
 {
   "name": "grapps",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A website showcasing the content of several free-app-of-the-day websites",
   "main": "index.js",
   "scripts": {
