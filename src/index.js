@@ -32,21 +32,21 @@ $(() => {
     });
 
     // Platform buttons handler
-    $('.page-header li').on('click', () => {
-        if (!Platform.locked) { Platform.active = $(this).attr('id').replace('filter-', ''); }
+    $('.page-header li').on('click', (e) => {
+        if (!Platform.locked) { Platform.active = $(e.target).attr('id').replace('filter-', ''); }
     });
 
     // Platform settings
-    $(".settings-group input[type='radio']").on('click', () => {
-        Platform.initial = $(this).attr('id').replace('input-radio-', '');
+    $(".settings-group input[type='radio']").on('click', (e) => {
+        Platform.initial = $(e).attr('id').replace('input-radio-', '');
     });
 
     // Provider settings
-    $('.checkbox-group').click((evt) => {
-        evt.stopPropagation();
-        evt.preventDefault();
+    $('.checkbox-group').click((e) => {
+        e.stopPropagation();
+        e.preventDefault();
 
-        const $checkbox = $(this).find(':checkbox');
+        const $checkbox = $(e.target).find(':checkbox');
         const name = $checkbox.attr('id').replace('input-check-', '');
         const checked = $checkbox.is(':checked');
 
@@ -54,8 +54,8 @@ $(() => {
         Preferences.setProviderEnabled(name, !checked);
     });
 
-    $('.checkbox-group :checkbox').click(() => {
-        $(this).parent('.checkbox-group').click();
+    $('.checkbox-group :checkbox').click((e) => {
+        $(e).parent('.checkbox-group').click();
     });
 
     // Settings button handler
