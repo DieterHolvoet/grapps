@@ -34,7 +34,7 @@ module.exports = {
                     'babel-loader',
                 ],
                 include: [
-                    path.resolve(__dirname, '../assets'),
+                    path.resolve(__dirname, '../src'),
                 ],
             },
             {
@@ -59,7 +59,7 @@ module.exports = {
     resolve: {
         modules: [
             path.resolve(__dirname, '../node_modules'),
-            path.resolve(__dirname, '../assets'),
+            path.resolve(__dirname, '../src'),
         ],
     },
 };
