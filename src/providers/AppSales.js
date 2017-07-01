@@ -23,22 +23,24 @@ class AppSales extends Provider {
         const $data = $(data.replace(/src/gi, 'source'));
         const self = this;
 
-        $data.find('.sales:not(.charts) .sale-item:not(.expired)').each((i, eventItem) => {
-            const $eventItem = $(eventItem);
-            const app = new App(self);
+        $data.find('.sale-item')
+            .filter((i, item) => $(item).parents('#now-free').length)
+            .each((i, eventItem) => {
+                const $eventItem = $(eventItem);
+                const app = new App(self);
 
-            app.icon = $eventItem.find('.sale-icon img').attr('source');
-            app.title = $eventItem.find('.sale-name .apptitle').text();
-            // app.subtitle = $eventItem.find(".sale-name .developer").text();
-            app.url = `https://www.app-sales.net${$eventItem.find('.sale-name .sale-link').attr('href')}`;
-            app.op = $eventItem.find('.sale-pricing .price-old').text();
-            app.np = $eventItem.find('.sale-pricing .price-new').text();
+                app.icon = $eventItem.find('.app-icon img').attr('source');
+                app.title = $eventItem.find('.app-name').text();
+                // app.subtitle = $eventItem.find(".sale-name .developer").text();
+                app.url = $eventItem.attr('href');
+                app.op = $eventItem.find('.price-old').text();
+                app.np = 'Free';
 
-            if (empty(app.op)) delete app.op;
-            if (empty(app.np)) delete app.np;
+                if (empty(app.op)) delete app.op;
+                if (empty(app.np)) delete app.np;
 
-            self.apps.push(app);
-        });
+                self.apps.push(app);
+            });
     }
 }
 
