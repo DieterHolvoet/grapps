@@ -34,13 +34,11 @@ class Providers {
     static get map() {
         return {
             amazon: "Amazon",
-            appgratis: "AppGratis",
             appoftheday: "App Of The Day",
             appsales: "AppSales",
             appshopper: "AppShopper",
             gotd: "Giveaway Of The Day",
             iosnoops: "iOSnoops",
-            myappfree: "MyAppFree",
             windowsstoredeals: "Windows Store Deals"
         }
     }

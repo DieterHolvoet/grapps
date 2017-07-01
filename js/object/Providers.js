@@ -67,15 +67,12 @@ var Providers = function () {
         get: function get() {
             return {
                 amazon: "Amazon",
-                appgratis: "AppGratis",
                 appoftheday: "App Of The Day",
                 appsales: "AppSales",
                 appshopper: "AppShopper",
                 gotd: "Giveaway Of The Day",
                 iosnoops: "iOSnoops",
-                myappfree: "MyAppFree",
-                windowsstoredeals: "Windows Store Deals",
-                playdealoftheweek: "Google Play Deal of the Week"
+                windowsstoredeals: "Windows Store Deals"
             };
         }
     }]);

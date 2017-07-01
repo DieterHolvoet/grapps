@@ -28,7 +28,6 @@ var Platform = function () {
 
                     switch (platform) {
                         case "android":
-                            providers.push(new AppGratisAndroid().load());
                             providers.push(new AppOfTheDayAndroid().load());
                             providers.push(new GOTDAndroid().load());
                             providers.push(new AppSales().load());
@@ -36,7 +35,6 @@ var Platform = function () {
                             break;
 
                         case "iphone":
-                            providers.push(new AppGratisIPhone().load());
                             providers.push(new AppOfTheDayIPhone().load());
                             providers.push(new GOTDIPhone().load());
                             providers.push(new AppShopperIPhone().load());
@@ -44,12 +42,10 @@ var Platform = function () {
                             break;
 
                         case "windows":
-                            providers.push(new MyAppFree().load());
                             providers.push(new WindowsStoreDeals().load());
                             break;
 
                         case "ipad":
-                            providers.push(new AppGratisIPad().load());
                             providers.push(new AppShopperIPad().load());
                             providers.push(new IOSnoopsIPad().load());
                             break;
