@@ -18,7 +18,7 @@ class AppOfTheDay extends Provider {
 
         $data = $data
             .find('.offer')
-            .filter(() => $(this).find('a.link-app-free').exists())
+            .filter((i, item) => $(item).find('a.link-app-free').exists())
             .first();
 
         app.icon = $data.find('.icon-app').attr('data-original');
@@ -28,7 +28,6 @@ class AppOfTheDay extends Provider {
         app.description = $data.find('.description').text();
 
         if (app.op.length === 0) app.op = undefined;
-
         self.apps.push(app);
     }
 }
