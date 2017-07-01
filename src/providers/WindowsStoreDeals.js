@@ -29,7 +29,7 @@ class WindowsStoreDeals extends Provider {
             app.description = result.description;
             app.icon = result.image;
             app.url = result.url;
-            app.op = result.oldprice;
+            app.op = result.currency + result.oldprice;
             app.np = result.currency + result.newprice;
 
             if (app.np === '$0') app.np = 'FREE';
