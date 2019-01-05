@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const rucksack = require('rucksack-css');
 const autoprefixer = require('autoprefixer');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const entrypoints = require('./entrypoints.js');
 
 const plugins = [
@@ -16,10 +16,14 @@ const plugins = [
             ],
         },
     }),
-    new ExtractTextPlugin('[name].css')
+    new MiniCssExtractPlugin({
+        filename: '[name].css',
+        chunkFilename: '[id].css',
+    }),
 ];
 
 module.exports = {
+    mode: 'production',
     entry: entrypoints,
     output: {
         path: path.resolve(__dirname, '../public/assets'),
@@ -39,13 +43,14 @@ module.exports = {
             },
             {
                 test: /\.s?css|sass/,
-                loader: ExtractTextPlugin.extract({
-                    loader: [
-                        'css-loader',
-                        'postcss-loader',
-                        'sass-loader',
-                    ],
-                }),
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader',
+                ],
             },
             {
                 test: /\.woff/,

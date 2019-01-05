@@ -20,6 +20,7 @@ const plugins = [
 ];
 
 module.exports = {
+    mode: 'development',
     entry: entrypoints,
     output: {
         path: path.resolve(__dirname, '../public/assets'),
@@ -56,7 +57,7 @@ module.exports = {
                 loaders: [
                     'file-loader',
                 ],
-            }
+            },
         ],
     },
     plugins,
